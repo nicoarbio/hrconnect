@@ -1,0 +1,6 @@
+{
+  "admin": ["CU_M01_01", "CU_M01_02", "CU_M02_01", "CU_M03_01"],
+  "user": ["CU_M02_02"],
+  "recruiter": ["CU_M03_02"],
+  "manager": ["CU_M03_04"]
+}
