@@ -24,7 +24,8 @@ cd hrconnect
 pip install -r requirements.txt
 ```
 
-3. Ejecutar el programa
+3. Ejecutar el programa (desde la raíz del repositorio)
 ```bash
-python src/hrconnect/__main__.py
+export PYTHONPATH=./src:$PYTHONPATH
+python3.10 src/hrconnect/__main__.py
 ```
