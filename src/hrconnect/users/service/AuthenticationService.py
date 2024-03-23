@@ -5,5 +5,5 @@ class AuthenticationService:
     def authenticate(self, username, password):
         user = self._user_dao.get_by_username(username)
         if user is None or user.get_password() != password:
-            return False
-        return True
+            return None
+        return user

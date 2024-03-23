@@ -8,6 +8,7 @@ class Menu:
         self._keepRunningMenu = True
         self._loggedIn = False
         self._menuOptions = []
+        self._authenticatedUser = None
 
         self._userDao = userDao
         self._authService = AuthenticationService(userDao)
@@ -21,9 +22,11 @@ class Menu:
         while not self._loggedIn:
             username = IOUtils.input_string("Usuario: ")
             password = encrypt_password(IOUtils.input_password("Contraseña: "))
-            if self._authService.authenticate(username, password):
+            self._authenticatedUser = self._authService.authenticate(username, password)
+            if self._authenticatedUser is not None:
                 self._loggedIn = True
                 print("Autenticación Correcta!")
+                print(self._authenticatedUser)
             else:
                 print("Usuario o contraseña incorrectos. Intente nuevamente.")
 

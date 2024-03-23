@@ -4,28 +4,38 @@ Trabajo práctico realizado en Python para la materia Análisis de Sistemas de l
 ## Integrantes
 - Arbio, Nicolás Garbiel ([nicoarbio](https://github.com/nicoarbio))
 - Cobice, Leonardo
-- Guerchicoff Adamo, Tomás
+- Guerchicoff Adamo, Tomás ([Tguerchicoff](https://github.com/Tguerchicoff))
 - Zaragoza, Yago
 
 ### Requerimientos
 - Python 3.10 o superior
-- pip
+- `pip install bcrypt`
 
 ### Instalación
 1. Clonar el repositorio (SSH o HTTPS)
-```bash
-git clone git@github.com:nicoarbio/hrconnect.git
-git clone https://github.com/nicoarbio/hrconnect.git
-```
+    ```bash
+    git clone git@github.com:nicoarbio/hrconnect.git
+    ```
+    ```bash
+    git clone https://github.com/nicoarbio/hrconnect.git
+    ```
 
-2. Entrar al repositorio  einstalar las dependencias
-```bash
-cd hrconnect
-pip install -r requirements.txt
-```
+1. Entrar al repositorio 
+   ```bash
+   cd hrconnect
+   ```
 
-3. Ejecutar el programa (desde la raíz del repositorio)
-```bash
-export PYTHONPATH=./src:$PYTHONPATH
-python3.10 src/hrconnect/__main__.py
-```
+### Ejecución
+1. Ejecutar el programa (desde la raíz del repositorio)
+<!--
+    - Win: 
+      ```bash
+      set PYTHONPATH=.\src;%PYTHONPATH%
+      python3.10 src/hrconnect/__main__.py
+      ```
+-->
+   - Linux:
+      ```bash
+      export PYTHONPATH=./src:$PYTHONPATH
+      python3.10 src/hrconnect/__main__.py
+      ```
