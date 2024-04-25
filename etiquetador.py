@@ -3,19 +3,59 @@ from tkinter import filedialog
 from PIL import Image, ImageTk
 import glob
 
+class Quadrant:
+    def __init__(self, start_x, start_y, end_x, end_y, color, counter_text=""):
+        self.start_x = start_x
+        self.start_y = start_y
+        self.end_x = end_x
+        self.end_y = end_y
+        self.color = color
+        self.counter_text = counter_text
+
+    def draw(self, canvas):
+        canvas.create_rectangle(self.start_x, self.start_y, self.end_x, self.end_y, outline=self.color)
+        if self.counter_text:
+            x = self.start_x + 10
+            y = self.start_y - 10
+            canvas.create_text(x, y, text=self.counter_text, fill=self.color)
+
+    def __str__(self):
+        return f"({self.start_x}, {self.start_y}, {self.end_x}, {self.end_y})"
+
+
+class CustImage:
+    def __init__(self, photo, file_path):
+        self.photo = photo
+        self.file_path = file_path
+        self.quadrants = []
+        self.quadrant_counter = 0
+
+    def add_quadrant(self, quadrant):
+        if self.quadrant_counter < 2:
+            self.quadrants.append(quadrant)
+            self.quadrant_counter += 1
+
+    def clear_quadrants(self):
+        self.quadrants = []
+        self.quadrant_counter = 0
+
+class Folder:
+    def __init__(self):
+        self.images = []
+
+    def add_image(self, image):
+        self.images.append(image)
+
+    def clear_images(self):
+        self.images = []
+
 class App(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title("img-processor")
-        self.images = []
+        self.folder = Folder()
         self.current_image_idx = 0
-        self.image_quadrants = {}  # Diccionario para almacenar los cuadrantes de cada imagen
-        self.dragging = False
-        self.start_x = None
-        self.start_y = None
-        self.info_file = "info.txt"  # Nombre del archivo de texto
-        self.quadrant_counter = 0  # Contador para los cuadrantes
-        self.standard_size = (400, 400)  # Tamaño estándar de las imágenes
+        self.standard_size = (500, 500)
         
         self.canvas = tk.Canvas(self, width=self.standard_size[0], height=self.standard_size[1], cursor="crosshair")
         self.canvas.pack()
@@ -41,23 +81,18 @@ class App(tk.Tk):
         
         self.mainloop()
         
-    def load_folder(self): # Cargar carpeta con imágenes
+    def load_folder(self):
         folder_path = filedialog.askdirectory()
         if folder_path:
-            # Limpiar datos anteriores al cargar una nueva carpeta
-            self.images = []
-            self.image_quadrants = {}
-            self.current_image_idx = 0
-            
-            # Cargar imágenes
-            for file_path in sorted(glob.glob(folder_path + "/*.jpg")):  # Puedes ajustar la extensión según tus necesidades
+            self.folder.clear_images()
+            for file_path in sorted(glob.glob(folder_path + "/*.jpg")):
                 try:
                     print("Cargando imagen:", file_path)
                     image = Image.open(file_path)
-                    image = self.resize_image(image, self.standard_size)  # Redimensionar la imagen
-                    photo = ImageTk.PhotoImage(image)  # Mantener una referencia a la imagen
-                    self.images.append((photo, file_path))
-                    self.image_quadrants[file_path] = {"quad_1": [], "quad_2": []}  # Inicializar los cuadrantes para esta imagen
+                    image = self.resize_image(image, self.standard_size)
+                    photo = ImageTk.PhotoImage(image)
+                    cust_image = CustImage(photo, file_path)
+                    self.folder.add_image(cust_image)
                 except Exception as e:
                     print("Error al cargar la imagen:", e)
             self.show_current_image()
@@ -67,59 +102,45 @@ class App(tk.Tk):
         
     def show_current_image(self):
         self.canvas.delete("all")
-        image, file_path = self.images[self.current_image_idx]
-        self.canvas.create_image(0, 0, anchor=tk.NW, image=image)
-        
-        # Dibujar cuadrantes
-        for idx, quad in enumerate(self.image_quadrants[file_path]["quad_1"]):
-            self.draw_quadrant(quad, idx)
-        for idx, quad in enumerate(self.image_quadrants[file_path]["quad_2"]):
-            self.draw_quadrant(quad, idx)
-        
-    def draw_quadrant(self, quad, idx):
-        color = 'red' if idx == 0 else 'blue'
-        self.canvas.create_rectangle(quad, outline=color)
-        x, y, _, _ = quad
-        self.canvas.create_text(x + 10, y + 10, text=str(idx), fill=color)  # Mostrar el número en el cuadrante
+        image = self.folder.images[self.current_image_idx]
+        self.canvas.create_image(0, 0, anchor=tk.NW, image=image.photo)
+        for quadrant in image.quadrants:
+            quadrant.draw(self.canvas)
         
     def on_press(self, event):
-        quadrants_1 = self.image_quadrants[self.images[self.current_image_idx][1]]["quad_1"]
-        quadrants_2 = self.image_quadrants[self.images[self.current_image_idx][1]]["quad_2"]
-        if len(quadrants_1) < 2 and len(quadrants_2) < 2:
-            # Comenzar el arrastre
-            self.dragging = True
+        image = self.folder.images[self.current_image_idx]
+        if len(image.quadrants) < 2:
             self.start_x = event.x
             self.start_y = event.y
         
     def on_drag(self, event):
-        # Dibujar el cuadrante mientras se arrastra
-        if self.dragging:
-            quadrants_1 = self.image_quadrants[self.images[self.current_image_idx][1]]["quad_1"]
-            quadrants_2 = self.image_quadrants[self.images[self.current_image_idx][1]]["quad_2"]
-            if len(quadrants_1) < 2 or len(quadrants_2) < 2:
-                self.show_current_image()
-                if len(quadrants_1) < 2:
-                    self.canvas.create_rectangle(self.start_x, self.start_y, event.x, event.y, outline='red')
-                elif len(quadrants_2) < 2:
-                    self.canvas.create_rectangle(self.start_x, self.start_y, event.x, event.y, outline='blue')
-        
-    def on_release(self, event):
-        # Finalizar el arrastre y dibujar el cuadrante
-        if self.dragging:
+        image = self.folder.images[self.current_image_idx]
+        if len(image.quadrants) < 2:
             end_x = event.x
             end_y = event.y
-            quadrants_1 = self.image_quadrants[self.images[self.current_image_idx][1]]["quad_1"]
-            quadrants_2 = self.image_quadrants[self.images[self.current_image_idx][1]]["quad_2"]
-            if len(quadrants_1) < 2:
-                quad = (self.start_x, self.start_y, end_x, end_y)
-                quadrants_1.append(quad)
-            elif len(quadrants_2) < 2:
-                quad = (self.start_x, self.start_y, end_x, end_y)
-                quadrants_2.append(quad)
-            self.dragging = False
-            self.start_x = None
-            self.start_y = None
+            if len(image.quadrants) == 0:
+                color = 'red'
+            else:
+                color = 'blue'
+            self.canvas.delete("quadrant_temp")
+            self.canvas.create_rectangle(self.start_x, self.start_y, end_x, end_y, outline=color, tags="quadrant_temp")
+        
+    def on_release(self, event):
+        image = self.folder.images[self.current_image_idx]
+        if len(image.quadrants) < 2:
+            end_x = event.x
+            end_y = event.y
+            if len(image.quadrants) == 0:
+                color = 'red'
+                counter_text = "1"
+            else:
+                color = 'blue'
+                counter_text = "2"
+            quadrant = Quadrant(self.start_x, self.start_y, end_x, end_y, color, counter_text)
+            image.add_quadrant(quadrant)
+            self.canvas.delete("quadrant_temp")
             self.show_current_image()
+
         
     def prev_image(self):
         if self.current_image_idx > 0:
@@ -127,30 +148,23 @@ class App(tk.Tk):
             self.show_current_image()
         
     def next_image(self):
-        if self.current_image_idx < len(self.images) - 1:
+        if self.current_image_idx < len(self.folder.images) - 1:
             self.current_image_idx += 1
             self.show_current_image()
             
     def save_info(self):
-        # Guardar información en un archivo de texto
-        with open(self.info_file, "a") as f:
-            for file_path, quadrants_dict in self.image_quadrants.items():
-                file_name = file_path.split("/")[-1]
-                for quad_key, quadrants in quadrants_dict.items():
-                    # Obtén los valores antes de entrar al bucle de cuadrantes
-                    value_1 = "0"
-                    value_2 = "1"
-                    for i, quad in enumerate(quadrants, start=1):
-                        if i == 1:
-                            value = value_1
-                        elif i == 2:
-                            value = value_2
-                        info = f"{file_name}: {value} - {quad}\n"
-                        f.write(info)
-        print("Información guardada en", self.info_file)
+        with open("info.txt", "a") as f:
+            for cust_image in self.folder.images:
+                file_name = cust_image.file_path.split("/")[-1]
+                for i, quadrant in enumerate(cust_image.quadrants, start=1):
+                    value = "0" if i == 1 else "1"
+                    info = f"{file_name}: {value} - {quadrant}\n"
+                    f.write(info)
+        print("Información guardada en info.txt")
         
     def reset_quadrants(self):
-        self.image_quadrants[self.images[self.current_image_idx][1]] = {"quad_1": [], "quad_2": []}
+        image = self.folder.images[self.current_image_idx]
+        image.clear_quadrants()
         self.show_current_image()
 
 if __name__ == "__main__":
