@@ -39,9 +39,14 @@ class CustImage:
         self.quadrants = []
         self.quadrant_counter = 0
 
+    def resize_image(self, size):
+        return self.photo.resize(size)
+
+
 class Folder:
     def __init__(self):
         self.images = []
+        self.current_image_idx = 0
 
     def add_image(self, image):
         self.images.append(image)
@@ -49,12 +54,39 @@ class Folder:
     def clear_images(self):
         self.images = []
 
+    def load_images_from_folder(self, folder_path, standard_size):
+        for file_path in sorted(glob.glob(folder_path + "/*.jpg")):
+            try:
+                print("Cargando imagen:", file_path)
+                image = Image.open(file_path)
+                image = image.resize(standard_size)
+                photo = ImageTk.PhotoImage(image)
+                cust_image = CustImage(photo, file_path)
+                self.add_image(cust_image)
+            except Exception as e:
+                print("Error al cargar la imagen:", e)
+
+    def prev_image(self):
+        if self.current_image_idx > 0:
+            self.current_image_idx -= 1
+            return True
+        return False
+
+    def next_image(self):
+        if self.current_image_idx < len(self.images) - 1:
+            self.current_image_idx += 1
+            return True
+        return False
+
+    def get_current_image(self):
+        return self.images[self.current_image_idx]
+
+
 class App(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title("img-processor")
         self.folder = Folder()
-        self.current_image_idx = 0
         self.standard_size = (500, 500)
         
         self.canvas = tk.Canvas(self, width=self.standard_size[0], height=self.standard_size[1], cursor="crosshair")
@@ -85,36 +117,24 @@ class App(tk.Tk):
         folder_path = filedialog.askdirectory()
         if folder_path:
             self.folder.clear_images()
-            for file_path in sorted(glob.glob(folder_path + "/*.jpg")):
-                try:
-                    print("Cargando imagen:", file_path)
-                    image = Image.open(file_path)
-                    image = self.resize_image(image, self.standard_size)
-                    photo = ImageTk.PhotoImage(image)
-                    cust_image = CustImage(photo, file_path)
-                    self.folder.add_image(cust_image)
-                except Exception as e:
-                    print("Error al cargar la imagen:", e)
+            self.folder.load_images_from_folder(folder_path, self.standard_size)
             self.show_current_image()
-        
-    def resize_image(self, image, size):
-        return image.resize(size)
         
     def show_current_image(self):
         self.canvas.delete("all")
-        image = self.folder.images[self.current_image_idx]
+        image = self.folder.get_current_image()
         self.canvas.create_image(0, 0, anchor=tk.NW, image=image.photo)
         for quadrant in image.quadrants:
             quadrant.draw(self.canvas)
         
     def on_press(self, event):
-        image = self.folder.images[self.current_image_idx]
+        image = self.folder.get_current_image()
         if len(image.quadrants) < 2:
             self.start_x = event.x
             self.start_y = event.y
         
     def on_drag(self, event):
-        image = self.folder.images[self.current_image_idx]
+        image = self.folder.get_current_image()
         if len(image.quadrants) < 2:
             end_x = event.x
             end_y = event.y
@@ -126,30 +146,27 @@ class App(tk.Tk):
             self.canvas.create_rectangle(self.start_x, self.start_y, end_x, end_y, outline=color, tags="quadrant_temp")
         
     def on_release(self, event):
-        image = self.folder.images[self.current_image_idx]
+        image = self.folder.get_current_image()
         if len(image.quadrants) < 2:
             end_x = event.x
             end_y = event.y
             if len(image.quadrants) == 0:
                 color = 'red'
-                counter_text = "1"
+                counter_text = "0"
             else:
                 color = 'blue'
-                counter_text = "2"
+                counter_text = "1"
             quadrant = Quadrant(self.start_x, self.start_y, end_x, end_y, color, counter_text)
             image.add_quadrant(quadrant)
             self.canvas.delete("quadrant_temp")
             self.show_current_image()
-
         
     def prev_image(self):
-        if self.current_image_idx > 0:
-            self.current_image_idx -= 1
+        if self.folder.prev_image():
             self.show_current_image()
         
     def next_image(self):
-        if self.current_image_idx < len(self.folder.images) - 1:
-            self.current_image_idx += 1
+        if self.folder.next_image():
             self.show_current_image()
             
     def save_info(self):
@@ -163,7 +180,7 @@ class App(tk.Tk):
         print("Información guardada en info.txt")
         
     def reset_quadrants(self):
-        image = self.folder.images[self.current_image_idx]
+        image = self.folder.get_current_image()
         image.clear_quadrants()
         self.show_current_image()
 
