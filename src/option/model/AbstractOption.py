@@ -11,4 +11,8 @@ class AbstractOption(ABC):
     def execute_option_use_case(self):
         pass
 
+    # toString
+    def __str__(self):
+        return self.get_option_name()
+
 

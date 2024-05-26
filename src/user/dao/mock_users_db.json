@@ -3,6 +3,7 @@
     "email": "nico@nico.com",
     "password": "$2a$12$ugbdiNlWTTN.jlf7qMMAOumd/GWTlwtMxbg7pExQI3LkVqA.9XUBO",
     "position": "Empleado",
+    "role": "hr_manager",
     "employee_id": 123,
     "last_login": "2022-01-01T00:00:00",
     "is_blocked": false
@@ -11,6 +12,7 @@
     "email": "nico2@nico.com",
     "password": "$2a$12$ugbdiNlWTTN.jlf7qMMAOumd/GWTlwtMxbg7pExQI3LkVqA.9XUBO",
     "position": "Empleado",
+    "role": "employee",
     "employee_id": 123,
     "last_login": "2022-01-01T00:00:00",
     "is_blocked": false

@@ -1,13 +1,13 @@
 from src.option.model.AbstractOption import AbstractOption
 
 
-class M01_CU01(AbstractOption):
+class M03_CU02(AbstractOption):
 
     def get_id(self):
-        return "M01_CU01"
+        return "M03_CU02"
 
     def get_description(self):
-        return "Crear usuario"
+        return "M prueba"
 
     def get_option_name(self):
         return self.get_id() + ": " + self.get_description()

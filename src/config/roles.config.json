@@ -1,0 +1,11 @@
+{
+  "cu_by_role": {
+    "employee": ["M01_CU01"],
+    "hr_recruiter": ["M02_CU01"],
+    "hr_partner": ["M03_CU01", "M03_CU02"],
+    "hr_manager": ["M04_CU01"]
+  },
+  "composite_roles": {
+    "hr_manager": ["hr_partner", "hr_recruiter"]
+  }
+}

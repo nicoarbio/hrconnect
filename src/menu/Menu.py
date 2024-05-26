@@ -20,31 +20,32 @@ class Menu:
         self._run_menu()
 
     def _login(self):
-        while not self._loggedIn:
+        while self._authenticatedUser == None:
             username = IOUtils.input_string("Usuario: ")
             password = encrypt_password(IOUtils.input_password("Contraseña: "))
             self._authenticatedUser = self._authService.authenticate(username, password)
             if self._authenticatedUser is not None:
-                self._loggedIn = True
                 print("Autenticación Correcta!")
                 Logging.debug(self._authenticatedUser)
             else:
                 print("Usuario o contraseña incorrectos. Intente nuevamente.")
 
     def _run_menu(self):
-        while self._keepRunningMenu and self._loggedIn:
-            opcion = self._showOptions()
+        while self._keepRunningMenu and self._authenticatedUser != None:
+            print("Menú:")
+            user_options = self._option_service.get_options_for_role(self._authenticatedUser.get_role())
+            for i, option in enumerate(user_options):
+                print(f"{i+1}. {option.get_option_name()}")
+            print("q. Terminar programa")
+            
+            opcion = IOUtils.input_string("Seleccione una opción: ")
+            print("Usted ha ingresado ", opcion)
             if opcion == "q":
                 self._shutdown()
+            else:
+                selected_option = user_options[int(opcion)-1]
+                selected_option.execute_option_use_case()
 
     def _shutdown(self):
         self._keepRunningMenu = False
         print("Programa terminado.")
-
-    def _showOptions(self):
-        print("Menú:")
-        print("q. Terminar programa")
-        opcion = IOUtils.input_string("Seleccione una opción: ")
-        print("Usted ha ingresado ", opcion)
-        return opcion
-

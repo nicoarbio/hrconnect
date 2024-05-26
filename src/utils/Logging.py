@@ -5,4 +5,4 @@ class Logging:
     @staticmethod
     def debug(message):
         if (AppConfig.get_property_and_compare_value('logger.level', 'debug')):
-            print(message)
+            print("DEBUG: " + str(message))

@@ -1,6 +1,6 @@
 import json
-from .AbstractUserDAO import AbstractUserDAO
-from ..model.User import User
+from src.user.dao.AbstractUserDAO import AbstractUserDAO
+from src.user.model.User import User
 
 INTIAL_USERS_DB_FILEPATH = "src/user/dao/mock_users_db.json"
 
