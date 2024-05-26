@@ -1,12 +1,10 @@
 import bcrypt
 
-
 def encrypt_password(password):
-    #salt = bcrypt.gensalt()
-    with open("src/hrconnect/config/salt_key") as file:
-        salt = file.read().encode('utf-8')
-    hashed_password = bcrypt.hashpw(password.encode('utf-8'), salt)
-    return hashed_password.decode('utf-8')
+    #print(bcrypt.gensalt())
+    with open("src/config/password_salt_key") as file:
+        salt = file.read().strip()
+    return bcrypt.hashpw(password.encode('utf-8'), salt)
 
 
 def verify_password(input_password, hashed_password):

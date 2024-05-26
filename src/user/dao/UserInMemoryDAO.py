@@ -2,12 +2,12 @@ import json
 from .AbstractUserDAO import AbstractUserDAO
 from ..model.User import User
 
-PATH_TO_MOCK_FILE = "src/hrconnect/users/dao/mock_users_db.json"
+INTIAL_USERS_DB_FILEPATH = "src/user/dao/mock_users_db.json"
 
 
 class UserInMemoryDAO(AbstractUserDAO):
     def __init__(self):
-        with open(PATH_TO_MOCK_FILE) as file:
+        with open(INTIAL_USERS_DB_FILEPATH) as file:
             data = json.load(file)
             self._data = {username: User(**user_data) for username, user_data in data.items()}
 

@@ -1,7 +1,7 @@
 {
   "nico@nico.com": {
     "email": "nico@nico.com",
-    "password": "$2b$12$qqjoeVYAGqj6mdFPhwpIZu4ouZcZUaQFJOt.2DUxl56N/3U7Unxvu",
+    "password": "$2a$12$ugbdiNlWTTN.jlf7qMMAOumd/GWTlwtMxbg7pExQI3LkVqA.9XUBO",
     "position": "Empleado",
     "employee_id": 123,
     "last_login": "2022-01-01T00:00:00",
@@ -9,7 +9,7 @@
   },
   "nico2@nico.com":  {
     "email": "nico2@nico.com",
-    "password": "$2b$12$qqjoeVYAGqj6mdFPhwpIZu4ouZcZUaQFJOt.2DUxl56N/3U7Unxvu",
+    "password": "$2a$12$ugbdiNlWTTN.jlf7qMMAOumd/GWTlwtMxbg7pExQI3LkVqA.9XUBO",
     "position": "Empleado",
     "employee_id": 123,
     "last_login": "2022-01-01T00:00:00",

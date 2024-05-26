@@ -1,4 +1,5 @@
 class AuthenticationService:
+
     def __init__(self, user_dao):
         self._user_dao = user_dao
 
