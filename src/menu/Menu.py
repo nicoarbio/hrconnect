@@ -1,10 +1,10 @@
 import signal
 
-from src.utils.IOUtils import IOUtils
-from src.utils.EnctryptUtils import encrypt_password
+from src.utils.Logging import Logging
 from src.user.service.AuthenticationService import AuthenticationService
 from src.option.service.OptionService import OptionService
-from src.utils.Logging import Logging
+from src.utils.IOUtils import IOUtils
+from src.utils.EnctryptUtils import encrypt_password
 
 class Menu:
     def __init__(self, option_service: OptionService, authentication_service: AuthenticationService):
