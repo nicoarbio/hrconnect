@@ -2,6 +2,7 @@ import pkgutil
 import importlib
 import json
 from collections import defaultdict
+import inspect
 
 from src.option.model.AbstractOption import AbstractOption
 from src.utils.Logging import Logging
@@ -11,19 +12,19 @@ ROLES_CONFIG_FILEPATH = "src/config/roles.config.json"
 class OptionService:
 
     def __init__(self):
-        self._package_name = "src.option.use-cases"
+        Logging.debug("Cargando servicio de opciones para el usuario")
+        self._package_name = "src.option.model.use-cases"
         self._options = []
         self._cu_by_role = {}
-        self._load_options()
         self._load_cu_by_role()
 
-    def _load_options(self):
+    def load_options(self):
         package = __import__(self._package_name, fromlist=[""])
         for _, module_name, _ in pkgutil.iter_modules(package.__path__):
             module = importlib.import_module(f"{self._package_name}.{module_name}")
             for attribute_name in dir(module):
                 attribute = getattr(module, attribute_name)
-                if isinstance(attribute, type) and issubclass(attribute, AbstractOption) and attribute is not AbstractOption:
+                if inspect.isclass(attribute) and issubclass(attribute, AbstractOption) and not inspect.isabstract(attribute):
                     self._options.append(attribute())
     
     def _load_cu_by_role(self):
@@ -49,3 +50,6 @@ class OptionService:
         Logging.debug("Opciones disponibles para " + role + ": " + str(cu_ids))
         filtered_options = [option for option in self._options if option.get_id() in cu_ids]
         return filtered_options
+
+    def get_schedule_options(self):
+        return [option for option in self._options if hasattr(option, 'cancelThread')]

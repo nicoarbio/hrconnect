@@ -1,6 +1,8 @@
+from src.user.dao.AbstractUserDAO import AbstractUserDAO
+
 class AuthenticationService:
 
-    def __init__(self, user_dao):
+    def __init__(self, user_dao: AbstractUserDAO):
         self._user_dao = user_dao
 
     def authenticate(self, username, password):

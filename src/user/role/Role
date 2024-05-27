@@ -1,7 +1,0 @@
-from enum import Enum
-
-class Role(Enum):
-    EMPLOYEE = "employee"
-    HR_RECRUITER = "hr_recruiter"
-    HR_PARTNER = "hr_partner"
-    HR_MANAGER = "hr_manager"
