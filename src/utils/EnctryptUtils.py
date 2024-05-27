@@ -2,7 +2,7 @@ import bcrypt
 
 def encrypt_password(password):
     #salt = bcrypt.gensalt()
-    with open("src/config/password_salt_key") as file:
+    with open("src/config/password_salt_key.env") as file:
         salt = file.read().strip()
     return bcrypt.hashpw(password.encode('utf-8'), salt)
 

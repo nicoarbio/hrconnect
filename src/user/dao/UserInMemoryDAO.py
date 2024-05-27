@@ -2,7 +2,7 @@ import json
 from src.user.dao.AbstractUserDAO import AbstractUserDAO
 from src.user.model.User import User
 
-INTIAL_USERS_DB_FILEPATH = "src/user/dao/mock_users_db.json"
+INTIAL_USERS_DB_FILEPATH = "src/config/mock_users_db.json"
 
 
 class UserInMemoryDAO(AbstractUserDAO):
