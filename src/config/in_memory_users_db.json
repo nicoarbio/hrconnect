@@ -1,0 +1,29 @@
+[
+    {
+        "_email": "hr_partner@hrconnect.com",
+        "_password": "$2a$12$ugbdiNlWTTN.jlf7qMMAOumd/GWTlwtMxbg7pExQI3LkVqA.9XUBO",
+        "_position": "Colaborador de RRHH",
+        "_role": "hr_partner",
+        "_employee_id": 1,
+        "_last_login": "2024-05-27 21:23:21",
+        "_is_blocked": false
+    },
+    {
+        "_email": "manager@hrconnect.com",
+        "_password": "$2a$12$ugbdiNlWTTN.jlf7qMMAOumd/GWTlwtMxbg7pExQI3LkVqA.9XUBO",
+        "_position": "Manager de RRHH",
+        "_role": "hr_manager",
+        "_employee_id": 2,
+        "_last_login": "2022-12-18 15:00:00",
+        "_is_blocked": false
+    },
+    {
+        "_email": "it-manager@hrconnect.com",
+        "_password": "$2a$12$ugbdiNlWTTN.jlf7qMMAOumd/GWTlwtMxbg7pExQI3LkVqA.9XUBO",
+        "_position": "Manager de IT",
+        "_role": "employee",
+        "_employee_id": 2,
+        "_last_login": "2022-12-18 15:00:00",
+        "_is_blocked": false
+    }
+]

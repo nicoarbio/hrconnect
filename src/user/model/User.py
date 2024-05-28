@@ -1,13 +1,13 @@
 class User:
-    def __init__(self, email, password, position, role, employee_id, last_login, is_blocked):
+    def __init__(self, _email, _password, _position, _role, _employee_id, _last_login, _is_blocked):
         # type: (str, str, str, str, str, str, bool) -> None
-        self._email = email
-        self._password = password
-        self._position = position
-        self._role = role
-        self._employee_id = employee_id
-        self._last_login = last_login
-        self._is_blocked = is_blocked
+        self._email = _email
+        self._password = _password
+        self._position = _position
+        self._role = _role
+        self._employee_id = _employee_id
+        self._last_login = _last_login
+        self._is_blocked = _is_blocked
 
     # toString
     def __str__(self):

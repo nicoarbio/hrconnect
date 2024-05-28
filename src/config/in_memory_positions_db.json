@@ -1,0 +1,16 @@
+[
+    {
+        "_id": "1",
+        "_department": "Engineering",
+        "_manager_user_id": "2",
+        "_title": "Software Engineer",
+        "_description": "Java Software Engineer con 3 a\u00c3\u00b1os de experiencia en desarrollo de aplicaciones web en la nube."
+    },
+    {
+        "_id": "2",
+        "_department": "Utilities",
+        "_manager_user_id": "2",
+        "_title": "Software Engineer",
+        "_description": "Java Software Engineer con 3 a\u00c3\u00b1os de experiencia en desarrollo de aplicaciones web en la nube."
+    }
+]

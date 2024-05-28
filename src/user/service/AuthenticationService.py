@@ -9,4 +9,5 @@ class AuthenticationService:
         user = self._user_dao.get_by_username(username)
         if user is None or user.get_password() != password:
             return None
+        self._user_dao.refresh_last_login(user)
         return user
