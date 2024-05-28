@@ -7,7 +7,7 @@ Trabajo práctico realizado en Python para la materia Análisis de Sistemas de l
 - Guerchicoff Adamo, Tomás ([Tguerchicoff](https://github.com/Tguerchicoff))
 - Zaragoza, Yago ([Yago-Zaragoza](https://github.com/Yago-Zaragoza))
 
-### Instalación: preparación del ambiente local con las dependencias requeridas
+## Instalación: preparación del ambiente local con las dependencias requeridas
 **¡Modo administrador requerido!**
 
 1. Tener python instalado
@@ -17,7 +17,7 @@ Trabajo práctico realizado en Python para la materia Análisis de Sistemas de l
 1. Ejecutar `flit install --deps=all --symlink`
 1. Ejecutar `pip install -e .`
 
-### Ejecutar aplicación
+## Ejecutar aplicación
 1. Validar que el ambiente local esté activo: `.\venv\Scripts\activate`
 1. Ejecutar el programa (desde la raíz del repositorio, admin no requerido)
    ```bash
@@ -27,7 +27,7 @@ Trabajo práctico realizado en Python para la materia Análisis de Sistemas de l
 
 # Pendientes
 1. [X] Armar un BeanManager para poder instanciar las clases de los DAOs y services
-1. [ ] Armar un dao de Posiciones ("positions") para poder borrar posiciones
+1. [X] Armar un dao de Posiciones ("positions") para poder borrar posiciones
 1. [ ] Armar un dao de Postulantes ("applicants") para poder borrar postulantes
 1. [ ] Armar un service que devuelta el estado del suministro electrico. (Random y con un 5% de posibilidades. De ser así dinámicante debe aparecer una nueva opcion para el hr_partner que le permita cargar la fichada manual)
 1. [ ] Sumarle al dao de users (en vez de armar un dao de Notificaciones ("notifications") para poder almacenar las nuevas notifcaciones para los usuarios)

@@ -8,6 +8,8 @@ class User:
         self._employee_id = _employee_id
         self._last_login = _last_login
         self._is_blocked = _is_blocked
+        #self._notification_ids = _notification_ids
+        #self._building_card_id = _building_card_id
 
     # toString
     def __str__(self):
