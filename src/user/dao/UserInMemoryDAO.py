@@ -1,17 +1,20 @@
 import json
-from datetime import datetime
+import uuid
 
 from src.user.dao.AbstractUserDAO import AbstractUserDAO
 from src.user.model.User import User
 
-USERS_DB_FILEPATH = "src/config/in_memory_users_db.json"
 
+USERS_DB_FILEPATH = "src/config/in_memory_users_db.json"
 
 class UserInMemoryDAO(AbstractUserDAO):
     def __init__(self):
         with open(USERS_DB_FILEPATH) as file:
             data = json.load(file)
             self._data = [User(**user_data) for user_data in data]
+
+    def get_next_id(self):
+        return uuid.uuid4()
 
     def get_all(self):
         return self._data
@@ -23,7 +26,9 @@ class UserInMemoryDAO(AbstractUserDAO):
         return None
     
     def create(self, user: User):
+        user._id = self.get_next_id()
         self._data.append(user)
+        return user
 
     def update(self, username, updated_user: User):
         for i, user in enumerate(self._data):
@@ -46,5 +51,5 @@ class UserInMemoryDAO(AbstractUserDAO):
             json.dump([user.__dict__ for user in self._data], file, indent=4)
 
     def refresh_last_login(self, user: User):
-        user._last_login = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        user.refresh_last_login()
         self.update(user._email, user)

@@ -8,6 +8,7 @@ class AbstractScheduledOption(AbstractOption, ABC):
 
     @abstractmethod
     def get_period_in_seconds(self):
+        """Set the period in seconds for the scheduled option"""
         pass
 
     def __init__(self):

@@ -1,15 +1,20 @@
 import json
+import uuid
+
 from src.position.dao.AbstractPositionDAO import AbstractPositionDAO
 from src.position.model.Position import Position
 
-POSITIONS_DB_FILEPATH = "src/config/in_memory_positions_db.json"
 
+POSITIONS_DB_FILEPATH = "src/config/in_memory_positions_db.json"
 
 class PositionInMemoryDAO(AbstractPositionDAO):
     def __init__(self):
         with open(POSITIONS_DB_FILEPATH) as file:
             data = json.load(file)
             self._data = [Position(**position_data) for position_data in data]
+
+    def get_next_id(self):
+        return uuid.uuid4()
 
     def get_all(self):
         return self._data
@@ -30,7 +35,9 @@ class PositionInMemoryDAO(AbstractPositionDAO):
         return None
     
     def create(self, position: Position):
+        position._id = self.get_next_id()
         self._data.append(position)
+        return position
 
     def update(self, position_id, updated_position: Position):
         for i, position in enumerate(self._data):

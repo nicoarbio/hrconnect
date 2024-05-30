@@ -4,26 +4,32 @@
         "_password": "$2a$12$ugbdiNlWTTN.jlf7qMMAOumd/GWTlwtMxbg7pExQI3LkVqA.9XUBO",
         "_position": "Colaborador de RRHH",
         "_role": "hr_partner",
-        "_employee_id": 1,
-        "_last_login": "2024-05-27 21:23:21",
-        "_is_blocked": false
+        "_employee_id": "a1c7b286-c160-4fb7-a23d-b6981b19da5e",
+        "_last_login": null,
+        "_is_blocked": false,
+        "_created_at": "2024-05-27 17:30:00",
+        "_updated_at": "2024-05-27 17:30:00"
     },
     {
         "_email": "manager@hrconnect.com",
         "_password": "$2a$12$ugbdiNlWTTN.jlf7qMMAOumd/GWTlwtMxbg7pExQI3LkVqA.9XUBO",
         "_position": "Manager de RRHH",
         "_role": "hr_manager",
-        "_employee_id": 2,
-        "_last_login": "2022-12-18 15:00:00",
-        "_is_blocked": false
+        "_employee_id": "2abf352c-9d5e-4e79-970a-c7df10e41466",
+        "_last_login": null,
+        "_is_blocked": false,
+        "_created_at": "2024-05-27 17:30:00",
+        "_updated_at": "2024-05-27 17:30:00"
     },
     {
         "_email": "it-manager@hrconnect.com",
         "_password": "$2a$12$ugbdiNlWTTN.jlf7qMMAOumd/GWTlwtMxbg7pExQI3LkVqA.9XUBO",
         "_position": "Manager de IT",
         "_role": "employee",
-        "_employee_id": 2,
-        "_last_login": "2022-12-18 15:00:00",
-        "_is_blocked": false
+        "_employee_id": "949cd9d9-ea0a-462b-88e2-0e2770d0514e",
+        "_last_login": null,
+        "_is_blocked": false,
+        "_created_at": "2024-05-27 17:30:00",
+        "_updated_at": "2024-05-27 17:30:00"
     }
 ]

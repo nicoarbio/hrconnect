@@ -5,14 +5,17 @@ class AbstractOption(ABC):
 
     @abstractmethod
     def get_id(self):
+        """Set the USE CASE ID. Example: `M04_CU16`"""
         pass
 
     @abstractmethod
     def get_description(self):
+        """Set the description to be shown for the user in menu. Example: `Crear usuario`"""
         pass
 
     @abstractmethod
     def execute_option_use_case(self):
+        """Step by step of the use case"""
         pass
 
     def get_option_name(self):

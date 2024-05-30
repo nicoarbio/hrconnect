@@ -1,3 +1,5 @@
+from getpass import getpass
+
 class IOUtils:
 
     @staticmethod
@@ -6,4 +8,4 @@ class IOUtils:
 
     @staticmethod
     def input_password(message):
-        return input(message)
+        return getpass(message)
