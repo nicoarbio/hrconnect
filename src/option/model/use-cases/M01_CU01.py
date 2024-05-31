@@ -9,7 +9,7 @@ class M01_CU01(AbstractOption):
         return "M01_CU01"
 
     def get_description(self):
-        return "Crear usuario"
+        return "Caso de uso con actor Empleado"
 
     def execute_option_use_case(self):
         # TODO agregar toda la logica con los bucles necesarios y la información necesaria

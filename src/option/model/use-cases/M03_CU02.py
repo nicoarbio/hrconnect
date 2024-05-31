@@ -9,7 +9,7 @@ class M03_CU02(AbstractOption):
         return "M03_CU02"
 
     def get_description(self):
-        return "M prueba"
+        return "Caso de uso con actor Colaborador de RRHH"
 
     def execute_option_use_case(self):
         # TODO agregar toda la logica con los bucles necesarios y la información necesaria

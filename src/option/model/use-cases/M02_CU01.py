@@ -9,7 +9,7 @@ class M02_CU01(AbstractOption):
         return "M02_CU01"
 
     def get_description(self):
-        return "M prueba"
+        return "Caso de uso con actor Recuiter"
 
     def execute_option_use_case(self):
         # TODO agregar toda la logica con los bucles necesarios y la información necesaria

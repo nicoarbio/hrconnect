@@ -15,12 +15,14 @@ class M03_CU01(AbstractOption):
     def execute_option_use_case(self):
         # TODO agregar toda la logica y la información necesarias
         str_items = map(str, BeanManager.get_OpenPositionDAO().get_all())
+        Logging.print("Posiciones abiertas en el sistema:")
         for item in str_items:
             Logging.print("-> " + str(item))
         str_items = map(str, BeanManager.get_UserDAO().get_all())
+        Logging.print("\nUsuarios en el sistema:")
         for item in str_items:
             Logging.print("-> " + str(item))
 
-        input("Presione una tecla para continuar...")
+        input("\nPresione una tecla para continuar...")
         Logging.clear()
 
