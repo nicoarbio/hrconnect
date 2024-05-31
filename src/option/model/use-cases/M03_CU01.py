@@ -10,16 +10,17 @@ class M03_CU01(AbstractOption):
         return "M03_CU01"
 
     def get_description(self):
-        return "M prueba"
+        return "Mostrar todas las posiciones y usuarios en el sistema"
 
     def execute_option_use_case(self):
-        # TODO agregar toda la logica con los bucles necesarios y la información necesaria
-        Logging.clear()
+        # TODO agregar toda la logica y la información necesarias
         str_items = map(str, BeanManager.get_PositionDAO().get_all())
         for item in str_items:
-            Logging.print(item)
+            Logging.print("-> " + str(item))
         str_items = map(str, BeanManager.get_UserDAO().get_all())
         for item in str_items:
-            Logging.print(item)
+            Logging.print("-> " + str(item))
 
-        Logging.print("Mensaje de estado final al ejecutar el caso de uso " + self.get_option_name())
+        input("Presione una tecla para continuar...")
+        Logging.clear()
+

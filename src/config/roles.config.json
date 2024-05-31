@@ -6,6 +6,8 @@
     "hr_manager": ["M04_CU01"]
   },
   "composite_roles": {
+    "hr_recruiter": ["employee"],
+    "hr_partner": ["employee"],
     "hr_manager": ["hr_partner", "hr_recruiter"]
   }
 }
