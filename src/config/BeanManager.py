@@ -1,5 +1,5 @@
 from src.user.dao.UserInMemoryDAO import UserInMemoryDAO
-from src.position.dao.PositionInMemoryDAO import PositionInMemoryDAO
+from src.open_position.dao.OpenPositionInMemoryDAO import OpenPositionInMemoryDAO
 from src.option.service.OptionService import OptionService
 from src.user.service.AuthenticationService import AuthenticationService
 from src.utils.interfaces.InMemoryDAO import InMemoryDAO
@@ -20,8 +20,8 @@ class BeanManager:
         return cls.get_instance('user_dao', UserInMemoryDAO)
     
     @classmethod
-    def get_PositionDAO(cls) -> PositionInMemoryDAO:
-        return cls.get_instance('position_dao', PositionInMemoryDAO)
+    def get_OpenPositionDAO(cls) -> OpenPositionInMemoryDAO:
+        return cls.get_instance('open_position_dao', OpenPositionInMemoryDAO)
     
     @classmethod
     def get_OptionService(cls) -> OptionService:

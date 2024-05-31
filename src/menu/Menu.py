@@ -30,7 +30,7 @@ class Menu:
             self._authenticated_user = self._authentication_service.authenticate(username, password)
             if self._authenticated_user is not None:
                 Logging.clear()
-                Logging.print("Autenticación Correcta!")
+                Logging.print("Autenticación Correcta! Bienvenido " + self._authenticated_user.get_full_name() + "!")
                 Logging.debug(self._authenticated_user)
                 self._option_service.load_options()
                 self._menu_options = self._option_service.get_options_for_role(self._authenticated_user.get_role())

@@ -14,7 +14,7 @@ class M03_CU01(AbstractOption):
 
     def execute_option_use_case(self):
         # TODO agregar toda la logica y la información necesarias
-        str_items = map(str, BeanManager.get_PositionDAO().get_all())
+        str_items = map(str, BeanManager.get_OpenPositionDAO().get_all())
         for item in str_items:
             Logging.print("-> " + str(item))
         str_items = map(str, BeanManager.get_UserDAO().get_all())

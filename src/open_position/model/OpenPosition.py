@@ -1,7 +1,7 @@
 from src.utils.DateUtils import DateUtils
 
 
-class Position:
+class OpenPosition:
     def __init__(self, _id, _department, _manager_user, _title, _description, _created_at = None, _updated_at = None):
         # type: (str, str, str, str, str, str, str) -> None
         self._id = _id
@@ -20,7 +20,7 @@ class Position:
 
     # toString
     def __str__(self):
-        return (f"Position(id={self._id}, title={self._title}, manager_user={self._manager_user}, description={self._description}, created_at={self._created_at}, updated_at={self._updated_at})")
+        return (f"OpenPosition(id={self._id}, title={self._title}, manager_user={self._manager_user}, description={self._description}, created_at={self._created_at}, updated_at={self._updated_at})")
 
     # Getters
     def get_id(self):
