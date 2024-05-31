@@ -1,29 +1,8 @@
-from abc import ABC, abstractmethod
+from abc import ABC
 
-from src.position.model.Position import Position
+from src.utils.interfaces.DAO import DAO
 
-class AbstractPositionDAO(ABC):
 
-    @abstractmethod
-    def get_all(self):
-        pass
+class AbstractPositionDAO(DAO, ABC):
 
-    @abstractmethod
-    def get_by_id(self, position_id):
-        pass
-
-    @abstractmethod
-    def delete(self, position: Position):
-        pass
-
-    @abstractmethod
-    def delete_by_id(self, position_id):
-        pass
-
-    @abstractmethod
-    def create(self, position: Position):
-        pass
-
-    @abstractmethod
-    def update(self, position_id, updated_position: Position):
-        pass
+    pass

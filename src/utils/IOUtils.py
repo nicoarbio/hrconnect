@@ -1,4 +1,6 @@
+import sys
 from getpass import getpass
+
 
 class IOUtils:
 
@@ -8,4 +10,7 @@ class IOUtils:
 
     @staticmethod
     def input_password(message):
-        return getpass(message)
+        try:
+            return getpass(message)
+        except KeyboardInterrupt as e:
+            sys.exit(0)

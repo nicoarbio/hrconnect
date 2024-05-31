@@ -1,8 +1,10 @@
 import configparser
 
+
 CONFIG_FILE_PATH = 'config.properties'
 
 class AppConfig:
+    
     @staticmethod
     def get_properties():
         config = configparser.ConfigParser()

@@ -5,6 +5,7 @@ from collections import defaultdict
 import inspect
 
 from src.option.model.AbstractOption import AbstractOption
+from src.option.model.AbstractScheduledOption import AbstractScheduledOption
 from src.utils.Logging import Logging
 
 ROLES_CONFIG_FILEPATH = "src/config/roles.config.json"
@@ -51,5 +52,5 @@ class OptionService:
         filtered_options = [option for option in self._options if option.get_id() in cu_ids]
         return filtered_options
 
-    def get_schedule_options(self):
+    def get_schedule_options(self) -> list[AbstractScheduledOption]:
         return [option for option in self._options if hasattr(option, 'cancelThread')]

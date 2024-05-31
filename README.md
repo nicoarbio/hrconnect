@@ -18,6 +18,7 @@ Trabajo práctico realizado en Python para la materia Análisis de Sistemas de l
 1. Ejecutar `pip install -e .`
 
 ## Ejecutar aplicación
+> La forma fácil es utilizar VSCode y desde `Run and Debug`, ejecutar `HRConnect`. Sino, desde la consola seguir los siguientes pasos
 1. Validar que el ambiente local esté activo: `.\venv\Scripts\activate`
 1. Ejecutar el programa (desde la raíz del repositorio, admin no requerido)
    ```bash

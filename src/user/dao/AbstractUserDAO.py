@@ -1,33 +1,15 @@
 from abc import ABC, abstractmethod
 
+from src.utils.interfaces.DAO import DAO
 from src.user.model.User import User
 
-class AbstractUserDAO(ABC):
+
+class AbstractUserDAO(DAO, ABC):
 
     @abstractmethod
-    def get_all(self):
+    def get_by_email(self, email) -> User:
         pass
 
-    @abstractmethod
-    def get_by_username(self, username):
-        pass
-
-    @abstractmethod
-    def create(self, user: User):
-        pass
-
-    @abstractmethod
-    def update(self, username, updated_user: User):
-        pass
-
-    @abstractmethod
-    def delete_by_username(self, username):
-        pass
-
-    @abstractmethod
-    def delete(self, user: User):
-        pass
-
-    @abstractmethod
     def refresh_last_login(self, user: User):
-        pass
+        user.refresh_last_login()
+        self.update(user)

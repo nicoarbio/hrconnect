@@ -6,6 +6,7 @@ from src.option.service.OptionService import OptionService
 from src.utils.IOUtils import IOUtils
 from src.utils.EnctryptUtils import encrypt_password
 
+
 class Menu:
     def __init__(self, option_service: OptionService, authentication_service: AuthenticationService):
         self._keep_running_menu = True
@@ -17,6 +18,7 @@ class Menu:
 
     def start(self, signal_handler):
         self.signal_handler = signal_handler
+        Logging.clear()
         Logging.print("Bienvenido al sistema de gestión de Recursos Humanos HR Connect")
         self._login()
         self._run_menu()
