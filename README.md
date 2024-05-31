@@ -8,13 +8,13 @@ Trabajo práctico realizado en Python para la materia Análisis de Sistemas de l
 - Zaragoza, Yago ([Yago-Zaragoza](https://github.com/Yago-Zaragoza))
 
 ## Instalación: preparación del ambiente local con las dependencias requeridas
-**¡Modo administrador requerido! En Windows, se recomienda utilizar Powershell**
+
+> 💡 En caso que no lo hayas hecho!
+> En Poweshell se requiere habilitar los scripts: `Set-ExecutionPolicy RemoteSigned -Scope CurrentUser`
 
 1. Tener python instalado (se utilizó la versión 3.12.2)
 1. Ejecutar `python -m venv venv`
 1. En Windows: `.\venv\Scripts\activate`. En Linux/Mac `source venv/bin/activate`
-1. Ejecutar `py -m pip install flit wheel`
-1. Ejecutar `flit install --deps=all --symlink`
 1. Ejecutar `pip install -e .`
 
 ## Ejecutar aplicación
