@@ -18,3 +18,9 @@ class UserInMemoryDAO(InMemoryDAO, AbstractUserDAO):
             if user.get_email() == email:
                 return user
         return None
+    
+    def convert_ids_to_entities(self):
+        return
+    
+    def convert_entities_to_ids(self):
+        return

@@ -25,7 +25,7 @@ class User:
 
     # toString
     def __str__(self):
-        return (f"User(fullname={self.get_full_name()}, email={self._email}, position={self._position}, role={self._role}, employee_id={self._employee_id}, last_login={self._last_login}, is_blocked?={self._is_blocked}, created_at={self._created_at}, updated_at={self._updated_at})\n")
+        return (f"User(fullname={self.get_full_name()}, email={self._email}, position={self._position}, role={self._role}, employee_id={self._employee_id}, last_login={self._last_login}, is_blocked?={self._is_blocked}, created_at={self._created_at}, updated_at={self._updated_at})")
 
     def refresh_last_login(self):
         self._last_login = DateUtils.get_formatted_current_date_time()
@@ -61,30 +61,30 @@ class User:
     def get_is_blocked(self):
         return self._is_blocked
 
-    # Patrón With (inmutable)
-    def with_email(self, email):
-        return User(email, self._password, self._name, self._lastname, self._position, self._role, self._employee_id, self._last_login, self._is_blocked, self._created_at, self._updated_at)
+    # Setters
+    def set_email(self, email):
+        self._email = email
 
-    def with_password(self, password):
-        return User(self._email, password, self._name, self._lastname, self._position, self._role, self._employee_id, self._last_login, self._is_blocked, self._created_at, self._updated_at)
-    
-    def with_name(self, name):
-        return User(self._email, self._password, name, self._lastname, self._position, self._role, self._employee_id, self._last_login, self._is_blocked, self._created_at, self._updated_at)
-    
-    def with_lastname(self, lastname):
-        return User(self._email, self._password, self._name, lastname, self._position, self._role, self._employee_id, self._last_login, self._is_blocked, self._created_at, self._updated_at)
+    #def set_password(self, password):
+    #    self._password = password
 
-    def with_position(self, position):
-        return User(self._email, self._password, self._name, self._lastname, position, self._role, self._employee_id, self._last_login, self._is_blocked, self._created_at, self._updated_at)
-    
-    def with_role(self, role):
-        return User(self._email, self._password, self._name, self._lastname, self._position, role, self._employee_id, self._last_login, self._is_blocked, self._created_at, self._updated_at)
+    def set_name(self, name):
+        self._name = name
 
-    def with_employee_id(self, employee_id):
-        return User(self._email, self._password, self._name, self._lastname, self._position, self._role, employee_id, self._last_login, self._is_blocked, self._created_at, self._updated_at)
+    def set_lastname(self, lastname):
+        self._lastname = lastname
 
-    def with_last_login(self, last_login):
-        return User(self._email, self._password, self._name, self._lastname, self._position, self._role, self._employee_id, last_login, self._is_blocked, self._created_at, self._updated_at)
+    def set_position(self, position):
+        self._position = position
 
-    def with_is_blocked(self, is_blocked):
-        return User(self._email, self._password, self._name, self._lastname, self._position, self._role, self._employee_id, self._last_login, is_blocked, self._created_at, self._updated_at)
+    def set_role(self, role):
+        self._role = role
+
+    #def set_employee_id(self, employee_id):
+    #    self._employee_id = employee_id
+
+    #def set_last_login(self, last_login):
+    #    self._last_login = last_login
+
+    def set_is_blocked(self, is_blocked):
+        self._is_blocked = is_blocked

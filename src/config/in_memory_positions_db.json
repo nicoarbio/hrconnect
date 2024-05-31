@@ -2,7 +2,7 @@
     {
         "_id": "344c251a-a250-4b6b-8f43-023bdfa5e519",
         "_department": "Engineering",
-        "_manager_user_id": "949cd9d9-ea0a-462b-88e2-0e2770d0514e2",
+        "_manager_user": "949cd9d9-ea0a-462b-88e2-0e2770d0514e",
         "_title": "Software Engineer",
         "_description": "Java Software Engineer con 3 años de experiencia en desarrollo de aplicaciones web en la nube.",
         "_created_at": "2024-05-27 17:50:00",
@@ -11,7 +11,7 @@
     {
         "_id": "9c71ee12-c3de-4945-9613-71e2a686c6df",
         "_department": "Utilities",
-        "_manager_user_id": "949cd9d9-ea0a-462b-88e2-0e2770d0514e",
+        "_manager_user": "949cd9d9-ea0a-462b-88e2-0e2770d0514e",
         "_title": "Software Engineer",
         "_description": "Java Software Engineer con 3 años de experiencia en desarrollo de aplicaciones web en la nube.",
         "_created_at": "2024-05-27 17:55:00",

@@ -1,11 +1,12 @@
 from src.utils.DateUtils import DateUtils
 
+
 class Position:
-    def __init__(self, _id, _department, _manager_user_id, _title, _description, _created_at = None, _updated_at = None):
+    def __init__(self, _id, _department, _manager_user, _title, _description, _created_at = None, _updated_at = None):
         # type: (str, str, str, str, str, str, str) -> None
         self._id = _id
         self._department = _department
-        self._manager_user_id = _manager_user_id
+        self._manager_user = _manager_user
         self._title = _title
         self._description = _description
         if _created_at is None:
@@ -19,7 +20,7 @@ class Position:
 
     # toString
     def __str__(self):
-        return (f"Position(id={self._id}, title={self._title}, department={self._manager_user_id}, description={self._description}, created_at={self._created_at}, updated_at={self._updated_at})\n")
+        return (f"Position(id={self._id}, title={self._title}, manager_user={self._manager_user}, description={self._description}, created_at={self._created_at}, updated_at={self._updated_at})")
 
     # Getters
     def get_id(self):
@@ -28,8 +29,8 @@ class Position:
     def get_department(self):
         return self._department
     
-    def get_manager_user_id(self):
-        return self._manager_user_id
+    def get_manager_user(self):
+        return self._manager_user
     
     def get_title(self):
         return self._title
@@ -37,17 +38,18 @@ class Position:
     def get_description(self):
         return self._description
     
+    # Setters
+    #def set_id(self, id):
+    #    self._id = id
+    
+    def set_department(self, department):
+        self._department = department
 
-    # Patrón With (inmutable)
-    def with_department(self, department):
-        return Position(self._id, department, self._manager_user_id, self._title, self._description, self._created_at, self._updated_at)
-    
-    def with_department(self, manager_user_id):
-        return Position(self._id, self._department, manager_user_id, self._title, self._description, self._created_at, self._updated_at)
-    
-    def with_department(self, title):
-        return Position(self._id, self._department, self._manager_user_id, title, self._description, self._created_at, self._updated_at)
-    
-    def with_department(self, description):
-        return Position(self._id, self._department, self._manager_user_id, self._title, description, self._created_at, self._updated_at)
+    def set_manager_user(self, manager_user):
+        self._manager_user = manager_user
 
+    def set_title(self, title):
+        self._title = title
+
+    def set_description(self, description):
+        self._description = description

@@ -15,13 +15,23 @@ class InMemoryDAO(DAO, ABC):
                 self._data = [TYPE(**each_entity_data) for each_entity_data in data]
         except FileNotFoundError:
             self._data = []
+        self.convert_ids_to_entities()
     
     def backup_data(self):
+        self.convert_entities_to_ids()
         with open(self._DB_FILEPATH, 'w', encoding='utf-8') as file:
             json.dump([entity.__dict__ for entity in self._data], file, indent=4, ensure_ascii=False)
 
     @abstractmethod
     def resolveKey(self, entity):
+        pass
+
+    @abstractmethod
+    def convert_ids_to_entities(self):
+        pass
+    
+    @abstractmethod
+    def convert_entities_to_ids(self):
         pass
 
     def get_next_id(self):
