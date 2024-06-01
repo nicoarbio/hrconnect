@@ -12,5 +12,7 @@ class IOUtils:
     def input_password(message):
         try:
             return getpass(message)
-        except KeyboardInterrupt as e:
-            sys.exit(0)
+        except KeyboardInterrupt:
+            import signal
+            from src import __main__
+            __main__.signal_handler(signal.SIGINT, None)
