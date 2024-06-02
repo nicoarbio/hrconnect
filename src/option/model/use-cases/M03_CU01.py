@@ -3,7 +3,7 @@ from src.utils.Logging import Logging
 from src.config.BeanManager import BeanManager
 
 
-# ATENCION: CASO DE USO DE EJEMPLO!
+# ATENCION: CASO DE USO DE EJEMPLO! - BORRAR
 class M03_CU01(AbstractOption):
 
     def get_id(self):

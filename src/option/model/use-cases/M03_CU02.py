@@ -2,7 +2,7 @@ from src.option.model.AbstractOption import AbstractOption
 from src.utils.Logging import Logging
 
 
-# ATENCION: CASO DE USO DE EJEMPLO!
+# ATENCION: CASO DE USO DE EJEMPLO! - BORRAR
 class M03_CU02(AbstractOption):
 
     def get_id(self):

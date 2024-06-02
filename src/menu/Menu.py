@@ -5,6 +5,7 @@ from src.user.service.AuthenticationService import AuthenticationService
 from src.option.service.OptionService import OptionService
 from src.utils.IOUtils import IOUtils
 from src.utils.EnctryptUtils import encrypt_password
+from src.utils.DateUtils import DateUtils
 
 
 class Menu:
@@ -30,7 +31,7 @@ class Menu:
             self._authenticated_user = self._authentication_service.authenticate(username, password)
             if self._authenticated_user is not None:
                 Logging.clear()
-                Logging.print("Autenticación Correcta! Bienvenido " + self._authenticated_user.get_full_name() + "!")
+                Logging.print("Autenticación Correcta!")
                 Logging.debug(self._authenticated_user)
                 self._option_service.load_options()
                 self._menu_options = self._option_service.get_options_for_role(self._authenticated_user.get_role())
@@ -39,6 +40,7 @@ class Menu:
 
     def _run_menu(self):
         while self._keep_running_menu and self._authenticated_user != None:
+            Logging.print("Bienvenido " + self._authenticated_user.get_full_name() + "! (" + DateUtils.get_formatted_current_date_time() + ")")
             Logging.print("Menú:")
             for i, option in enumerate(self._menu_options):
                 Logging.print(f"{i+1}. {option.get_option_name()}")
