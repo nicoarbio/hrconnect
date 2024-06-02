@@ -46,7 +46,7 @@ class Menu:
                 Logging.print(f"{i+1}. {option.get_option_name()}")
             Logging.print("q. Terminar programa")
             
-            opcion = IOUtils.input_string("Seleccione una opción: ")
+            opcion = IOUtils.input_string("> Seleccione una opción: ")
             Logging.print("Usted ha ingresado " + opcion)
             if opcion.lower() == "q":
                 self._shutdown()
