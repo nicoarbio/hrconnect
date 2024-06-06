@@ -7,6 +7,13 @@
         "_position": "Colaborador de RRHH",
         "_role": "hr_partner",
         "_employee_id": "a1c7b286-c160-4fb7-a23d-b6981b19da5e",
+        "_daily_start": {
+            "monday": "09:00:00",
+            "tuesday": "09:00:00",
+            "wednesday": "09:00:00",
+            "thursday": "08:00:00",
+            "friday": "09:00:00"
+        },
         "_last_login": null,
         "_is_blocked": false,
         "_created_at": "2024-05-27 17:30:00",
@@ -20,7 +27,14 @@
         "_position": "Manager de RRHH",
         "_role": "hr_manager",
         "_employee_id": "2abf352c-9d5e-4e79-970a-c7df10e41466",
-        "_last_login": "2024-06-05 01:13:30",
+        "_daily_start": {
+            "monday": "09:00:00",
+            "tuesday": "09:00:00",
+            "wednesday": "09:00:00",
+            "thursday": "08:00:00",
+            "friday": "09:00:00"
+        },
+        "_last_login": "2024-06-06 11:29:56",
         "_is_blocked": false,
         "_created_at": "2024-05-27 17:30:00",
         "_updated_at": "2024-05-27 17:30:00"
@@ -33,6 +47,13 @@
         "_position": "Manager de IT",
         "_role": "employee",
         "_employee_id": "949cd9d9-ea0a-462b-88e2-0e2770d0514e",
+        "_daily_start": {
+            "monday": "09:00:00",
+            "tuesday": "09:00:00",
+            "wednesday": "09:00:00",
+            "thursday": "08:00:00",
+            "friday": "09:00:00"
+        },
         "_last_login": null,
         "_is_blocked": false,
         "_created_at": "2024-05-27 17:30:00",

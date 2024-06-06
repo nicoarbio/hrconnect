@@ -19,6 +19,11 @@ class UserInMemoryDAO(InMemoryDAO, AbstractUserDAO):
                 return user
         return None
     
+    def get_today_start(self):
+        return [
+            {"_employee_id": user.get_employee_id(), "_daily_start": user.get_today_daily_start()}
+            for user in self.get_all() if user.get_daily_start() is not None ]
+    
     def convert_ids_to_entities(self):
         return
     

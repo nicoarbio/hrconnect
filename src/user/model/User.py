@@ -1,8 +1,9 @@
 from src.utils.DateUtils import DateUtils
 
+
 class User:
-    def __init__(self, _email, _password, _name, _lastname, _position, _role, _employee_id, _last_login, _is_blocked, _created_at = None, _updated_at = None):
-        # type: (str, str, str, str, str, str, str, str, bool, str, str) -> None
+    def __init__(self, _email, _password, _name, _lastname, _position, _role, _employee_id, _daily_start, _last_login, _is_blocked, _created_at = None, _updated_at = None):
+        # type: (str, str, str, str, str, str, str, str, str, bool, str, str) -> None
         self._email = _email
         self._password = _password
         self._name = _name
@@ -10,9 +11,9 @@ class User:
         self._position = _position
         self._role = _role
         self._employee_id = _employee_id
+        self._daily_start = _daily_start
         self._last_login = _last_login
         self._is_blocked = _is_blocked
-        #self._notification_ids = _notification_ids
         #self._building_card_id = _building_card_id
         if _created_at is None:
             self._created_at = DateUtils.get_formatted_current_date_time()
@@ -32,6 +33,9 @@ class User:
 
     def get_full_name(self):
         return f"{self._lastname}, {self._name}"
+    
+    def get_today_daily_start(self):
+        return self._daily_start.get(DateUtils.get_english_today_name(), None)
 
     # Getters
     def get_email(self):
@@ -54,6 +58,9 @@ class User:
 
     def get_employee_id(self):
         return self._employee_id
+    
+    def get_daily_start(self):
+        return self._daily_start
 
     def get_last_login(self):
         return self._last_login
@@ -82,6 +89,9 @@ class User:
 
     #def set_employee_id(self, employee_id):
     #    self._employee_id = employee_id
+
+    #def set_daily_start(self, daily_start):
+    #    self._daily_start = daily_start
 
     #def set_last_login(self, last_login):
     #    self._last_login = last_login
