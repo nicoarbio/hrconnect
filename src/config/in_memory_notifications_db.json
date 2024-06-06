@@ -1,0 +1,14 @@
+[
+    {
+        "_employee_id": "2abf352c-9d5e-4e79-970a-c7df10e41466",
+        "_status": "new",
+        "_message": "Ya han pasado 30 minutos de su horario de fichaje y aún no lo ha realizado",
+        "_created_at": "2024-06-06 11:21:00"
+    },
+    {
+        "_employee_id": "2abf352c-9d5e-4e79-970a-c7df10e41466",
+        "_status": "new",
+        "_message": "Ya han pasado 30 minutos de su horario de fichaje y aún no lo ha realizado",
+        "_created_at": "2024-06-06 11:22:32"
+    }
+]

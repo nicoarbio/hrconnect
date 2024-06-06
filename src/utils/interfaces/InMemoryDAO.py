@@ -35,10 +35,10 @@ class InMemoryDAO(DAO, ABC):
         pass
 
     def get_next_id(self):
-        return uuid.uuid4()    
+        return str(uuid.uuid4())
     
     def create(self, entity):
-        entity._id = self.get_next_id()
+        #entity._id = self.get_next_id()
         self._data.append(entity)
         return entity
     

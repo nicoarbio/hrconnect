@@ -1,0 +1,26 @@
+[
+    {
+        "_employee_id": "a1c7b286-c160-4fb7-a23d-b6981b19da5e",
+        "_date": "2024-06-06",
+        "_time_in": "07:00:00",
+        "_time_out": null
+    },
+    {
+        "_employee_id": "949cd9d9-ea0a-462b-88e2-0e2770d0514e",
+        "_date": "2024-06-06",
+        "_time_in": "07:00:00",
+        "_time_out": null
+    },
+    {
+        "_employee_id": "2abf352c-9d5e-4e79-970a-c7df10e41466",
+        "_date": "2024-06-06",
+        "_time_in": "11:22:01",
+        "_time_out": null
+    },
+    {
+        "_employee_id": "2abf352c-9d5e-4e79-970a-c7df10e41466",
+        "_date": "2024-06-06",
+        "_time_in": "11:30:02",
+        "_time_out": null
+    }
+]
