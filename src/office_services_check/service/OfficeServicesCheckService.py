@@ -4,7 +4,7 @@ import random
 class OfficeServicesCheckService:
 
     def __init__(self):
-        self._manual_sign = self.get_power_supply_status() == "OK" and self.get_internet_status() == "OK"
+        self._manual_sign = self.get_power_supply_status() != "OK" and self.get_internet_status() != "OK"
 
     def get_power_supply_status(self):
         if random.randint(1, 100) <= 5:
