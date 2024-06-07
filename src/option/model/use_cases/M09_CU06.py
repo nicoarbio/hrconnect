@@ -91,11 +91,14 @@ class M09_CU06(AbstractOption):
                             if user_email != None or user_email != "":
                                 existing_user = user_dao.get_by_email(user_email)
                                 if existing_user != None:
+                                    create_account = False
                                     existing_user["position"] = chosen_position.get_title()
                                     user_dao.update(existing_user)
-                                    Logging.clear()
-                                    Logging.print("La cuenta fue actualizada correctamente.")
-                                else:
-                                    IOUtils.input_string("Presione Enter para continuar con la creación de la cuenta de empleado...")
-                                    Logging.clear()
-                                    M01_CU01().manual_execute_option_use_case(name = chosen_applicant["name"], lastname = chosen_applicant["lastname"], position = chosen_position.get_title())
+                            
+                        if create_account:
+                            IOUtils.input_string("Presione Enter para continuar con la creación de la cuenta de empleado...")
+                            Logging.clear()
+                            M01_CU01().manual_execute_option_use_case(name = chosen_applicant["name"], lastname = chosen_applicant["lastname"], position = chosen_position.get_title())
+                        else:
+                            Logging.clear()
+                            Logging.print("La cuenta fue actualizada correctamente.")
