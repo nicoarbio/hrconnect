@@ -11,6 +11,7 @@
                 "lastname": "Kartun",
                 "email": "julian.kartun@gmail.com",
                 "status": "RECHAZADO",
+                "works_here": false,
                 "comments": [
                     "No cumple con los requisitos mínimos"
                 ]
@@ -31,6 +32,7 @@
                 "lastname": "Kartun",
                 "email": "julian.kartun@gmail.com",
                 "status": "ENTREVISTA PROGRAMADA",
+                "works_here": false,
                 "comments": [
                     "Perfil acorde al puesto",
                     "Entrevista programada para el 07/06/2024 a las 19:00hs"

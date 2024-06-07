@@ -3,7 +3,6 @@ from src.option.model.AbstractOption import AbstractOption
 from src.utils.Logging import Logging
 from src.config.BeanManager import BeanManager
 from src.utils.IOUtils import IOUtils
-from prettytable import PrettyTable
 from src.staff_sign.model.StaffSign import StaffSign
 
 
@@ -68,11 +67,7 @@ class M03_CU05(AbstractOption):
 
             if user is None:
                 Logging.print("Error. No se encontró nignun empleado con el email ingresado.")
-            elif not time_valid:
-                # validar formato de hora
-                Logging.print("Error. Verifique el formato provisto.")
-            elif not date_valid:
-                # validar formato de hora
+            elif not time_valid or not date_valid:
                 Logging.print("Error. Verifique el formato provisto.")
             else:
                 inputs_ok = True

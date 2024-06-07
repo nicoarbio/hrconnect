@@ -2,7 +2,7 @@ from src.utils.DateUtils import DateUtils
 
 
 class User:
-    def __init__(self, _email, _password, _name, _lastname, _position, _role, _employee_id, _daily_start, _last_login, _is_blocked, _created_at = None, _updated_at = None):
+    def __init__(self, _email, _password, _name, _lastname, _position, _role, _employee_id, _daily_start, _last_login = None, _is_blocked = False, _created_at = DateUtils.get_formatted_current_date_time(), _updated_at = DateUtils.get_formatted_current_date_time()):
         # type: (str, str, str, str, str, str, str, str, str, bool, str, str) -> None
         self._email = _email
         self._password = _password
@@ -14,15 +14,8 @@ class User:
         self._daily_start = _daily_start
         self._last_login = _last_login
         self._is_blocked = _is_blocked
-        #self._building_card_id = _building_card_id
-        if _created_at is None:
-            self._created_at = DateUtils.get_formatted_current_date_time()
-        else:
-            self._created_at = _created_at
-        if _updated_at is None:
-            self._updated_at = DateUtils.get_formatted_current_date_time()
-        else:
-            self._updated_at = _updated_at
+        self._created_at = _created_at
+        self._updated_at = _updated_at
 
     # toString
     def __str__(self):

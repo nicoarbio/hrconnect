@@ -14,7 +14,7 @@ class OptionService:
 
     def __init__(self):
         Logging.debug("Cargando servicio de opciones para el usuario")
-        self._package_name = "src.option.model.use-cases"
+        self._package_name = "src.option.model.use_cases"
         self._options = []
         self._cu_by_role = {}
         self._load_cu_by_role()

@@ -22,6 +22,13 @@ class OpenPosition:
     # toString
     def __str__(self):
         return (f"OpenPosition(id={self._id}, title={self._title}, num_of_applicants={len(self._applicants)}, department={self._department}, manager_user={self._manager_user}, description={self._description}, created_at={self._created_at}, updated_at={self._updated_at})")
+    
+    def get_acceptable_applicants(self):
+        acceptable_applicants = []
+        for applicant in self._applicants:
+            if applicant["status"] != "RECHAZADO" and applicant["status"] != "ACEPTADO":
+                acceptable_applicants.append(applicant)
+        return acceptable_applicants
 
     # Getters
     def get_id(self):

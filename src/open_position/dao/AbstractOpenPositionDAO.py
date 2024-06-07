@@ -25,3 +25,20 @@ class AbstractOpenPositionDAO(DAO, ABC):
                 positions_not_to_delete.append(position)
 
         return positions_to_delete, positions_not_to_delete
+    
+    def get_positions_with_applicants(self) -> tuple[list[OpenPosition], list[OpenPosition]]:
+        """Las posiciones abiertas con aplicantes son aquellas que tienen al menos un aplicante que no ha sido rechazado o aceptado."""
+        
+        all_open_positions = self.get_all()
+        positions_with_applicants = []
+
+        for position in all_open_positions:
+            for applicant in position.get_applicants():
+                if applicant["status"] == "RECHAZADO" or applicant["status"] == "ACEPTADO":
+                    open_position = False
+                else:
+                    open_position = True
+            if open_position:
+                positions_with_applicants.append(position)
+
+        return positions_with_applicants

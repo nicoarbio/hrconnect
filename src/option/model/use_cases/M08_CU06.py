@@ -8,7 +8,7 @@ from prettytable import PrettyTable
 
 class M08_CU06(AbstractOption):
     """
-    Descripción: Un Jefe puede borrar una posición creada por el mismo. En caso de tener postulantes asociados, solo se borrará la posición en caso de que estos estén en estado RECHAZADO.
+    Descripción: Un Jefe puede borrar una posición abierta. En caso de tener postulantes asociados, solo se borrará la posición en caso de que estos estén en estado RECHAZADO.
     """
 
     def get_id(self):
@@ -64,4 +64,3 @@ class M08_CU06(AbstractOption):
                 open_position_dao.delete(position_to_delete)
                 Logging.clear()
                 Logging.print("Posición abierta eliminada correctamente. (" + position_to_delete.get_title() + ")")
-
