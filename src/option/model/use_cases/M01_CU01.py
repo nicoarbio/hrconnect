@@ -38,7 +38,7 @@ class M01_CU01(AbstractOption):
         new_lastname = None
         new_position = None
         new_role = None
-        new_employee_id = uuid.uuid4()
+        new_employee_id = str(uuid.uuid4())
         new_daily_start_time = {
             "monday": "09:00:00",
             "tuesday": "09:00:00",
@@ -49,13 +49,13 @@ class M01_CU01(AbstractOption):
 
         email_regex = r'^.*@hrconnect\.com$'
         while new_email == None:
-            new_email = IOUtils.input_string("> Ingrese el email del empleado: (*@hrconnect.com)")
+            new_email = IOUtils.input_string("> Ingrese el email del empleado (*@hrconnect.com): ")
             if new_email == "" or re.match(email_regex, new_email) is None:
                 new_email = None
                 Logging.print("ERROR: Revise el email ingresado")
 
         while new_name == None:
-            new_name = IOUtils.input_string("> Ingrese el nombre del empleado: " + ("[" + name + "]" if name != None else ""))
+            new_name = IOUtils.input_string("> Ingrese el nombre del empleado: " + ("[" + name + "] " if name != None else ""))
             if new_name == "":
                 if name != None:
                     new_name = name
@@ -64,7 +64,7 @@ class M01_CU01(AbstractOption):
                     Logging.print("ERROR: Revise el nombre ingresado")
 
         while new_lastname == None:
-            new_lastname = IOUtils.input_string("> Ingrese el apellido del empleado: " + ("[" + lastname + "]" if lastname != None else ""))
+            new_lastname = IOUtils.input_string("> Ingrese el apellido del empleado: " + ("[" + lastname + "] " if lastname != None else ""))
             if new_lastname == "":
                 if lastname != None:
                     new_lastname = lastname
@@ -73,7 +73,7 @@ class M01_CU01(AbstractOption):
                     Logging.print("ERROR: Revise el apellido ingresado")
 
         while new_position == None:
-            new_position = IOUtils.input_string("> Ingrese el cargo del empleado: " + ("[" + position + "]" if position != None else ""))
+            new_position = IOUtils.input_string("> Ingrese el cargo del empleado: " + ("[" + position + "] " if position != None else ""))
             if new_position == "":
                 if position != None:
                     new_position = position
@@ -86,7 +86,7 @@ class M01_CU01(AbstractOption):
             actual_roles = list(json.load(file)['cu_by_role'].keys())
 
         while new_role == None:
-            new_role = IOUtils.input_string("> Ingrese el rol del empleado entre las opciones " + actual_roles + ": ")
+            new_role = IOUtils.input_string("> Ingrese el rol del empleado entre las opciones " + str(actual_roles) + ": ")
             
             if new_role == "" or new_role not in actual_roles:
                 new_role = None

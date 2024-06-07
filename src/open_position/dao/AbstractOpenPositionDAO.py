@@ -34,7 +34,10 @@ class AbstractOpenPositionDAO(DAO, ABC):
 
         for position in all_open_positions:
             for applicant in position.get_applicants():
-                if applicant["status"] == "RECHAZADO" or applicant["status"] == "ACEPTADO":
+                if applicant["status"] == "ACEPTADO":
+                    open_position = False
+                    break
+                elif applicant["status"] == "RECHAZADO":
                     open_position = False
                 else:
                     open_position = True
