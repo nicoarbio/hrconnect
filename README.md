@@ -25,12 +25,3 @@ Trabajo práctico realizado en Python para la materia Análisis de Sistemas de l
    py -m src
    ````
 1. Al finalizar, se recomienda desconectar el ambiente local ejecutando: `deactivate`
-
-# Pendientes
-1. [X] Armar un BeanManager para poder instanciar las clases de los DAOs y services
-1. [X] Armar un dao de Posiciones ("positions") para poder borrar posiciones
-1. [ ] Armar un service que devuelta el estado del suministro electrico. (Random y con un 5% de posibilidades. De ser así dinámicante debe aparecer una nueva opcion para el hr_partner que le permita cargar la fichada manual)
-1. [ ] Sumarle al dao de users (en vez de armar un dao de Notificaciones ("notifications") para poder almacenar las nuevas notifcaciones para los usuarios)
-1. [ ] Armar un service para envio de notificaciones cada cierto tiempo
-1. [ ] Sumarle al dao de users la posibilidad de crear nuevos usuarios. Para el caso de uso del hr_partner
-
